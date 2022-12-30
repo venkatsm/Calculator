@@ -14,7 +14,7 @@ namespace Notification.Client.Services.Impl
 
         public NotificationService()
         {
-            _notificationClient = RestService.For<INotificationClient>("https://localhost:7047/");
+            _notificationClient = RestService.For<INotificationClient>("https://notification-api-ms.azurewebsites.net/");
         }
 
         public async Task SendNotification(NotificationRequest request)

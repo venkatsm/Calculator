@@ -12,7 +12,7 @@ export class SignalrService {
   notificationObservable: BehaviorSubject<NotificationDto>;
 
   constructor() {
-    this.hubUrl = 'https://localhost:7047/notify';
+    this.hubUrl = 'https://notification-api-ms.azurewebsites.net/notify';
     this.notificationObservable = new BehaviorSubject<NotificationDto>(new NotificationDto());
   }
 

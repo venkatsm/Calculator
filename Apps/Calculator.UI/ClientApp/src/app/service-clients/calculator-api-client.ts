@@ -23,7 +23,7 @@ export class Client {
 
   constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
     this.http = http;
-    this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "http://localhost:7111/api";
+    this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "https://calculator-api-ms.azurewebsites.net/api";
   }
 
   /**
