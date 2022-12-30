@@ -6,4 +6,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\home\model\math-operation-response.ts" />
+    <None Remove="ClientApp\src\app\home\model\notification.ts" />
+    <None Remove="ClientApp\src\app\signalr.service.ts" />
+    <None Remove="ClientApp\src\app\utils\util.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\home\model\math-operation-response.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\home\model\notification.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\signalr.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\util.ts" />
+  </ItemGroup>
+
 </Project>

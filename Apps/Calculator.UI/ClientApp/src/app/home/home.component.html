@@ -1,14 +1,67 @@
-<h1>Hello, world!</h1>
-<p>Welcome to your new single-page application, built with:</p>
-<ul>
-  <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
-  <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>
-  <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
-</ul>
-<p>To help you get started, we've also set up:</p>
-<ul>
-  <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
-  <li><strong>Angular CLI integration</strong>. In development mode, there's no need to run <code>ng serve</code>. It runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.</li>
-  <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code>dotnet publish</code> configuration automatically invokes <code>ng build</code> to produce minified, ahead-of-time compiled JavaScript files.</li>
-</ul>
-<p>The <code>ClientApp</code> subdirectory is a standard Angular CLI application. If you open a command prompt in that directory, you can run any <code>ng</code> command (e.g., <code>ng test</code>), or use <code>npm</code> to install extra packages into it.</p>
+<br />
+<br />
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-4">
+      <label>First Operand</label>
+      <input type="text"
+             formControlName="firstNumber"
+             class="form-control" />
+      <div *ngIf="form.controls['firstNumber'].invalid && (form.controls['firstNumber'].dirty || form.controls['firstNumber'].touched)" class="alert alert-danger">
+        <div *ngIf="form.controls['firstNumber'].errors?.['required']">
+          First operand is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-4">
+      <label>Operator</label>
+      <select class="form-control" formControlName="operator">
+        <option value="">Choose...</option>
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+      </select>
+      <div *ngIf="form.controls['operator'].invalid && (form.controls['operator'].dirty || form.controls['operator'].touched)" class="alert alert-danger">
+        <div *ngIf="form.controls['operator'].errors?.['required']">
+          Operator is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-4">
+      <label>Second Operand</label>
+      <input type="text"
+             formControlName="secondNumber"
+             class="form-control" />
+      <div *ngIf="form.controls['secondNumber'].invalid && (form.controls['secondNumber'].dirty || form.controls['secondNumber'].touched)" class="alert alert-danger">
+        <div *ngIf="form.controls['secondNumber'].errors?.['required']">
+          Second operand is required.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col text-center">
+      <input type="submit" class="btn btn-primary" value="Calculate" />
+    </div>
+  </div>
+</form>
+<div class="text-center" *ngIf="displayRequestStatus">
+  <div class="text-success" *ngIf="isRequestSuccessful">
+    Request submitted successfully
+  </div>
+  <div class="text-danger" *ngIf="!isRequestSuccessful">
+    Unable to submit request
+  </div>
+</div>
+<br />
+<br />
+<div *ngFor="let operation of operations">
+  <div class="card p-4">
+    {{operation.firstNumber}} {{operation.operator}} {{operation.secondNumber}} = {{operation.result}}
+    <br /><br />
+    <b><i>{{operation.status}}</i></b>
+  </div>
+  <br/>
+</div>
+
